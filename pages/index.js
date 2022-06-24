@@ -1,7 +1,9 @@
-import { gql, useMutation } from '@apollo/client';
+import { gql } from '@apollo/client';
 import client from './client';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Table, Container, Button, Form } from 'react-bootstrap';
+import Edit from './component/edit';
+import { useState } from 'react';
 
 export async function getStaticProps() {
   const { data } = await client.query({
@@ -14,7 +16,9 @@ export async function getStaticProps() {
           memory
           storage
           uptime
-          location
+          location {
+            name
+          }
         }
       }
     `,
@@ -27,12 +31,13 @@ export async function getStaticProps() {
   };
 }
 export default function Home({ servers }) {
+  const [ isModal, setIsModal ] = useState (false)
 
   return (
     <Container>
-      <h1 className="text-center">List Server</h1>
-
-      <Table striped bordered hover variant="dark">
+      <Edit open={isModal} onClose={()=> setIsModal(false)}/>
+      <h1>Front End</h1>
+      <Table>
         <thead>
           <tr>
             <th>Name</th>
@@ -42,6 +47,7 @@ export default function Home({ servers }) {
             <th>Storage</th>
             <th>Uptime</th>
             <th>Location</th>
+            <th>Edit \ Delete</th>
           </tr>
         </thead>
         <tbody>
@@ -53,41 +59,15 @@ export default function Home({ servers }) {
               <td>{item.memory}</td>
               <td>{item.storage}</td>
               <td>{item.uptime}</td>
-              <td>{item.location}</td>
+              {item.location && <td>{item.location.name}</td>}
+              <td>
+                <button className='edit'onClick={() => setIsModal(true)}>Edit</button>
+                <button className='delete'>Delete</button>
+              </td>
             </tr>
           ))}
         </tbody>
       </Table>
-      <Form>
-        <Form.Group className="mb-3">
-          <Form.Label>Name</Form.Label>
-          <Form.Control type="text" placeholder="Enter Name" />
-        </Form.Group>
-
-        <Form.Group className="mb-3">
-          <Form.Label>Status</Form.Label>
-          <Form.Control type="text" placeholder="EnterStatus" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>cpu</Form.Label>
-          <Form.Control type="text" placeholder="Cpu" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>memory</Form.Label>
-          <Form.Control type="text" placeholder="Memory" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>storage</Form.Label>
-          <Form.Control type="text" placeholder="Storate" />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>uptime</Form.Label>
-          <Form.Control type="text" placeholder="Uptime" />
-        </Form.Group>
-        <Button variant="primary" type="submit">
-          Submit
-        </Button>
-      </Form>
     </Container>
   );
 }

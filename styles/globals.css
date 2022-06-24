@@ -13,4 +13,105 @@ a {
 
 * {
   box-sizing: border-box;
+  background-color: #262625 !important;
+}
+
+.table thead tr th{
+  color: rgb(79, 79, 206) !important;
+  background-color: #313131!important;
+  font-weight: 200 !important;
+  text-align: center;
+  border: 1px solid #1b1b1b !important;
+}
+
+.table tbody tr td{
+  color: white !important;
+  background-color: #40403f!important;
+}
+
+.table tbody tr td {
+  border: 1px solid #616160 !important;
+}
+
+
+  .edit {
+  width: 60px;
+  height: 26px;
+  background-color: #0ACF83!important;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  margin-right: 10px;
+  margin-left: 40px;
+}
+
+.delete {
+  width: 60px;
+  height: 26px;
+  background-color: #FF0742!important;
+  border-radius: 5px;
+  color: #fff;
+  border: none;
+  margin-right: 10px;
+}
+/* edit modal */
+body {
+  background-color: rgba(0, 0, 0, 0.5)!important;
+}
+
+.containerRegister {
+  background-color: gray!important;
+  border-radius: 10px;
+  width: 580px;
+  height: 700px;
+  align-items: center;
+  padding-top: 10px;
+  padding-left: 15px;
+  margin-left: 350px;
+  margin-top: 80px;
+  z-index: 100;
+  position: absolute!important;
+}
+
+.containerRegister form {
+  background-color: gray!important;
+}
+
+.containerRegister h1 {
+  background-color: gray!important;
+  font-family: Avenir;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 36px;
+  line-height: 49px;
+  color: black;
+  margin-bottom: 30px;
+  margin-top: 40px
+}
+
+.containerRegister  input {
+  padding-left: 20px;
+  display: block;
+  width: 550px;
+  height: 50px;
+  background: rgba(224, 200, 200, 0.25)!important;
+  border: 2px solid black;
+  box-sizing: border-box;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.containerRegister .button {
+  background-color: gray!important;
+  margin-left: 100px;
+}
+
+.containerRegister .button button {
+  width: 350px;
+  height: 50px;
+  background: black!important;
+  border-radius: 5px;
+  border: none;
+  color: white;
+  margin-top: 10px;
 }
